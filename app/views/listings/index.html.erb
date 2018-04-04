@@ -1,16 +1,25 @@
-<h1>Index - All Listing</h1>
-<%= link_to "New Listing", new_listing_path %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Index - All Listing</h1>
+	<div>
+		<%= link_to "New Listing", new_listing_path %>
 
-<% @listings.each do |list| %>
-	<p>
-	Name : <%= list.name %><br />
-	Phone : <%= list.phone %><br />
-	Type : <%= list.property_type %><br />
-	No. Room : <%= list.num_room %><br />
-	Country : <%= list.country %><br />
-	**********************************************<br />
-	<%= link_to "View", listing_path(list) %>
-	<%= link_to "Edit", edit_listing_path(list) %>
-	<%= link_to "Delete", list, method: :delete %>
-	</p>
-<% end %>
+		<% @listings.each do |list| %>
+			<p>
+			Name : <%= list.name %><br />
+			Phone : <%= list.phone %><br />
+			Type : <%= list.property_type %><br />
+			No. Room : <%= list.num_room %><br />
+			Country : <%= list.country %><br />
+			<%= link_to "View", listing_path(list) %>
+			<%= link_to "Edit", edit_listing_path(list) %>
+			<%= link_to "Delete", list, method: :delete %>
+			</p>
+		<% end %>
+	</div>
+</body>
+</html>
