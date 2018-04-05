@@ -7,31 +7,52 @@
 </head>
 <body>
 <!-- Just an image -->
-<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color: #9999; margin-bottom: 2rem;">
-  <a class="navbar-brand" href="#">
-    <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="margin-bottom: 1rem;">
+
+  <a class="navbar-brand" href="/">
+    <%= image_tag("logos/seabnb_logo.png", width: "80px") %>
   </a>
+
   <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <div class="text-center">
       <li class="nav-item">
         <% if signed_in? -%>
         <%= current_user.email %>
       </li>
-
+    
       <li class="nav-item">
         <%= button_to t(".sign_out"), sign_out_path, method: :delete, :class => "btn btn-primary" %>
         <% else -%>
           <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
         <% end -%>
       </li>
+    </div>
   </ul>
 
 
-    <div id="flash">
+</nav>
+
+ <!--    <div id="flash">
       <% flash.each do |key, value| -%>
         <div id="flash_<%= key %>"><%=h value %></div>
       <% end %>
+    </div> -->
+
+<div>
+
+  <% if flash[:notice].present? %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
     </div>
-</nav>
+  <% end %>
+   
+  <% if flash[:alert].present? %>    
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+</div>
 
   <%= yield %>
 

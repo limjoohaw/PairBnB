@@ -14,7 +14,10 @@ class ListingsController < ApplicationController
 	def create
 		@listing = Listing.new(allowed_params)
 		@listing.save
-		redirect_to listings_path
+		@next = listings_path
+		@notice = "Hooray, keep it up!"
+
+		redirect_to @next, :notice => @notice
 	end
 
 	def edit
@@ -25,13 +28,19 @@ class ListingsController < ApplicationController
 	def update
 		@listing = Listing.find(params[:id])
 		@listing.update_attributes(allowed_params)
-		redirect_to listings_path
+		@next = listings_path
+		@notice = "Update Successful"
+
+		redirect_to @next, :notice => @notice
 	end
 
 	def destroy		
 		@listing = Listing.find(params[:id])
 		@listing.destroy
-		redirect_to listings_path
+		@next = listings_path
+		@notice = "Delete Successful"
+
+		redirect_to @next, :alert => @notice
 	end
 
 	private

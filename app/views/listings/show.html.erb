@@ -1,11 +1,22 @@
-<h1>Show Page</h1>
-<%= link_to "New Listing", new_listing_path %>
-<p>
-	Name : <%= @listing.name %><br />
-	Phone : <%= @listing.phone %><br />
-	Type : <%= @listing.property_type %><br />
-	No. Room : <%= @listing.num_room %><br />
-	Country : <%= @listing.country %><br />
-	<%= link_to "Edit", edit_listing_path(@listing) %>
-	<%= link_to "Delete", @listing, method: :delete %>
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Listings</title>
+</head>
+<body class="text-center">
+
+	<%= render partial: '/listings/form' %>
+
+	<h1>Show Page</h1>
+	 <div>
+	   Name : <%= @listing.name %><br />
+	   Phone : <%= @listing.phone %><br />
+	   Type : <%= @listing.property_type %><br />
+	   No. Room : <%= @listing.num_room %><br />
+	   Country : <%= @listing.country %><br />
+	   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
+	   <%= link_to "Delete", @listing, method: :delete, :class => "btn btn-danger" %>
+	 </div>
+
+</body>
+</html>
