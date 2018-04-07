@@ -1,15 +1,23 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign up</title>
+</head>
+<body class="text-center">
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
+  <div id="clearance" class="sign-up" style="display: inline-block;">
+    <div style="border: 2px solid lightgrey; border-radius: 0.5rem; max-width: 80vh; padding: 1rem;" class="form-group">
+      
+    <h2><%= t(".title") %></h2>
 
-    <div class="submit-field">
-      <%= form.submit %>
+      <div class="text-left">
+        <%= form_for @user do |form| %>
+          <%= render partial: '/users/form', object: form %>
+        <% end %>
+      </div>
+
     </div>
+  </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
-</div>
+</body>
+</html>

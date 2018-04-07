@@ -1,9 +1,27 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+<form class="dropdown-menu p-4">
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+    <div class="form-group">
+      <label>
+        <%= form.label :email %>
+      </label>
+        <%= form.text_field :email, type: 'email', :class => "form-control", :placeholder => "email@example.com" %>
+    </div>
+
+    <div class="form-group">
+      <div class="password-field">
+        <div class="form-group">
+          <%= form.label :password %>
+        </div>
+        <%= form.password_field :password, :class => "form-control", :placeholder => "Password" %>
+      </div>
+    </div>
+
+    <div class="submit-field">
+      <%= form.submit %>
+      <button class="btn btn-primary">
+        <%= link_to "Sign in with", "/auth/facebook", :class => "text-white"%>
+        <img class="fab fa-facebook-square" style="margin-left: 0.2rem;" />
+      </button>
+    </div>
+
+</form>

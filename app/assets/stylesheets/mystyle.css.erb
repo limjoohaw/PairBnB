@@ -1,5 +1,27 @@
-#hometoppic {
-  border: 2px solid red;
-  min-height: 200px;
+#sunsetpic, #relaxpic {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-image: url('<%= asset_path("background/sunset.jpg") %>');
+  height: 90vh;
+}
+
+#relaxpic {
+   background-image: url('<%= asset_path("background/relax.jpg") %>');
+}
+
+.display-4 {
+	font-size: 3rem;
+}
+
+.lead {
+	background-color: black;
+	color: white;
+	font-family: monospace;
+	font-size: 1.5rem;
+}
+
+.card {
+  margin: 1rem;
+  width: 18rem;
 }

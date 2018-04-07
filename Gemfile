@@ -37,6 +37,8 @@ gem 'omniauth-facebook'
 gem 'bootstrap', '~> 4.0.0'
 
 gem 'jquery-rails'
+
+gem 'faker', '~> 1.8', '>= 1.8.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
