@@ -5,6 +5,7 @@
 </head>
 <body>
 
+<!-- header slider section -->
 <div class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
 
@@ -29,61 +30,30 @@
   </div>
 </div>
 
+<!-- cards section -->
 <div class="container">
   <div class="row justify-content-center">
-  
-	<div class="card">
-	  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
+  	<% @listings.sample(6).each do |listing| %>
+		<div class="card">
+		  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
 
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	</div>
-
-	<div class="card">
-	  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
-
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	</div>
-
-	<div class="card">
-	  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
-
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	</div>
-
-	<div class="card">
-	  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
-
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	</div>
-
-	<div class="card">
-	  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
-
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
-	  </div>
-	</div>
-
+		  <div class="card-body">
+		    <h5 class="card-title"><%= listing.name %></h5>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <%= link_to "More", listing_path(listing), :class => "btn btn-primary" %>
+		    <div class="text-right">From : $<%= listing.price.to_i %></div>
+		  </div>
+		</div>
+  	<% end %>
   </div>
 </div>
 
+<footer>
+	<div class="container">
+		<div class="row">
+			<p>Copyright © 2018 Seabnb Inc. All Rights Reserved.</p>
+		</div>
+	</div>
+</footer>
 </body>
 </html>

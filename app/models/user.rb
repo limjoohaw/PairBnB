@@ -20,4 +20,11 @@ class User < ApplicationRecord
    x = self.authentications.find_by(provider: 'facebook')
    return x.token unless x.nil?
  end
+
+ def admin?
+    self.role == "admin"
+ end
+
+ has_many :listings
+
 end

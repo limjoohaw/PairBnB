@@ -19,19 +19,24 @@
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav" style="float: right; text-align: right; display: block;">
-      
+        <!-- show current signed in email -->
         <li class="nav-item active">
-          <% if signed_in? -%>
+          <% if signed_in? %>
           <%= current_user.email %>
         </li>
-      
+        <!-- show sign in/out button -->
         <li class="nav-item active">
           <%= button_to t(".sign_out"), sign_out_path, method: :delete, :class => "btn btn-primary" %>
-          <% else -%>
+          <% else %>
             <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
-          <% end -%>
+          <% end %>
         </li>
-
+        <!-- show my listing link -->
+        <li class="nav-item active">
+          <% if signed_in? && current_user.role == "admin" %>
+          <%= link_to "My Listing", listings_path %>
+          <% end %>
+        </li>
     </ul>
   </div>
 </nav>
@@ -55,6 +60,11 @@
       <%= flash[:alert] %>
     </div>
   <% end %>
+
+</div>
+<div>
+  
+  <a class="back-to-top" href="#">back to top</a>
 
 </div>
 

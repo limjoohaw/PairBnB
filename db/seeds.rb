@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  
+# 5.times do
+ #  Listing.create ([{
+	# name: Faker::Name.name,
+	# property_type: Faker::Types.string,
+	# phone: Faker::PhoneNumber.cell_phone,
+	# country: Faker::Address.country,
+	# num_room: rand(2..10),
+	# price: rand(50..1000)
+	# }])
+# end

@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Listings</title>
+	<title>Seabnb - <%= @listing.name %></title>
 </head>
 <body class="text-center">
 
 	<%= render partial: '/listings/form' %>
 
-	<h1>Show Page</h1>
+	<h1><%= @listing.name %></h1>
 	 <div>
-	   Name : <%= @listing.name %><br />
+	   <!-- Name : <%#= @listing.name %><br /> -->
 	   Phone : <%= @listing.phone %><br />
 	   Type : <%= @listing.property_type %><br />
 	   No. Room : <%= @listing.num_room %><br />
 	   Country : <%= @listing.country %><br />
-	   Price : <%= @listing.price %><br />
-	   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
-	   <%= link_to "Delete", @listing, method: :delete, :class => "btn btn-danger" %>
+	   Price : <%= '%.2f' % @listing.price %><br />
+	   <% if signed_in? && current_user.id == @listing.user_id%>
+	   <!-- && current_user.id == current_listing.user_id -->
+		   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
+		   <%= link_to "Delete", @listing, method: :delete, :class => "btn btn-danger" %>
+	   <% end %>
 	 </div>
 
 </body>

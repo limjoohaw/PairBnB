@@ -1,6 +1,10 @@
 class ListingsController < ApplicationController
+
+	before_action :check_user, except: [:show]
+	before_action :check_owner, except: [:show, :index]
+
 	def index
-		@listings = Listing.all
+		@listings = current_user.listings
 	end
 
 	def show
@@ -12,7 +16,7 @@ class ListingsController < ApplicationController
 	end
 
 	def create
-		@listing = Listing.new(allowed_params)
+		@listing = current_user.listings.new(allowed_params)
 		@listing.save
 		@next = listings_path
 		@notice = "Hooray, keep it up!"
@@ -43,9 +47,23 @@ class ListingsController < ApplicationController
 		redirect_to @next, :alert => @notice
 	end
 
+
 	private
 	def allowed_params
 		params.require(:listing).permit(:name, :property_type, :phone, :country, :num_room, :price)
 	end
 
+	def check_user
+		if
+			signed_in? && current_user.admin?
+		else
+			raise ActiveRecord::RecordNotFound
+		end
+	end
+
+	def check_owner
+		if Listing.find(params[:id]).user_id != current_user.id 
+		   redirect_to "/404.html"
+		end
+	end
 end

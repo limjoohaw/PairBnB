@@ -3,7 +3,7 @@
 <head>
 	<title></title>
 </head>
-<body>
+<body class="text-center">
 	<%= render partial: '/listings/form' %>
 	<h1>Index - All Listing</h1>
 		<div class="row justify-content-center">
@@ -37,7 +37,7 @@
 									  <td>
 										  <%= link_to "View", listing_path(list), :class => "btn btn-outline-secondary" %>
 										  <%= link_to "Edit", edit_listing_path(list), :class => "btn btn-outline-secondary" %>
-										  <%= link_to "Delete", list, method: :delete, :class => "btn btn-danger" %>
+										  <%= link_to "Delete", list, method: :delete, :data => { :confirm => "Are you sure ?"}, :class => "btn btn-danger" %>
 									  </td>
 								  </tr>
 						  </tbody>
