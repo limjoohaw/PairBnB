@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>My Profile</h1>
+	 <div>
+		 <%= @user.email %>
+		 <%= link_to "Edit Profile", edit_user_path(@user) %>
+	 </div>
+
+	 <img class="img-fluid">
+			<% if @user.avatar.exists? %>
+			 	<%= image_tag(@user.avatar.url, :class => "avatar") %>
+		 	<% else %>
+			 	No Picture Display
+			<% end %>
+	 </img>
+
+</body>
+</html>

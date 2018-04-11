@@ -8,6 +8,15 @@
 <%= render partial: '/listings/form' %>
 
 	<h1>Edit Page</h1>
+	<div>
+		 <img class="img-fluid">
+			<% if @listing.picture.exists? %>
+			 	<%= image_tag(@listing.picture.url) %>
+		 	<% else %>
+			 	No Picture Display
+			<% end %>
+		 </img>
+	</div>
 	<div class="row justify-content-center">
 	  <div class="col-6">
 			<div class="form-group" style="text-align: left">
@@ -28,6 +37,7 @@
 				<%= f.text_field :price, :class => "form-control" %><br/>
 				<%= f.submit 'Update', :class => "btn btn-primary" %>					
 				<%= f.file_field :picture %>
+				<%= check_box_tag "_remove_picture", "1" %>Remove Picture
 			<% end %>
 			</div>
 	  </div>

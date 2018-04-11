@@ -30,7 +30,11 @@ class ListingsController < ApplicationController
 
 
 	def update
+
 		@listing = Listing.find(params[:id])
+		if params[:_remove_picture] == "1"
+			@listing.picture = nil
+		end
 		@listing.update_attributes(allowed_params)
 		@next = listings_path
 		@notice = "Update Successful"

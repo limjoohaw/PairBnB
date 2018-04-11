@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body class="text-center">
+<h1>Edit Profile</h1>
+	
+	<img class="img-fluid">
+			<% if @user.avatar.exists? %>
+			 	<%= image_tag(@user.avatar.url :medium) %>
+		 	<% else %>
+			 	No Picture Display
+			<% end %>
+	 </img>
+
+	<div class="row justify-content-center">
+	  <div class="col-6">
+			<div class="form-group" style="text-align: left">
+				<%= form_for @user do |f| %>
+					<%= f.label :email %>
+					<%= f.text_field :email, :class => "form-control", :readonly => "true" %><br />
+					<%= f.submit 'Update', :class => "btn btn-primary" %>
+					<%= f.file_field :avatar %>
+				<% end %>
+			</div>
+	  </div>
+	</div>
+
+</body>
+</html>

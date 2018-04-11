@@ -26,7 +26,8 @@
 				<%= f.text_area :more_description, :class => "form-control" %>
 				<%= f.label :price %>
 				<%= f.text_field :price, :class => "form-control" %><br />
-				<%= f.submit 'Save', :class => "btn btn-outline-primary" %>
+				<%= f.submit 'Save', :class => "btn btn-outline-primary" %>				
+				<%= f.file_field :picture %>
 			<% end %>
 		</div>
 	  </div>

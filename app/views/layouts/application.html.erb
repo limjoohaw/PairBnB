@@ -7,45 +7,57 @@
 </head>
 <body>
 <!-- Just an image -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 1rem;">
+<nav class="navbar navbar-default">
+  <div class="container">
 
-  <a class="navbar-brand" href="/">
-    <%= image_tag("logos/seabnb_logo.png", width: "60px") %>
+  <a class="navbar=header" href="/">
+    <%= image_tag("logos/seabnb_logo.png", width: "80vh") %>
   </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav" style="float: right; text-align: right; display: block;">
-        <!-- show current signed in email -->
-        <li class="nav-item active">
-          <% if signed_in? %>
-          <%= current_user.email %>
-        </li>
-        <!-- show sign in/out button -->
-        <li class="nav-item active">
-          <%= button_to t(".sign_out"), sign_out_path, method: :delete, :class => "btn btn-primary" %>
-          <% else %>
-            <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
-          <% end %>
-        </li>
-        <!-- show my listing link -->
-        <li class="nav-item active">
-          <% if signed_in? && current_user.role == "admin" %>
-          <%= link_to "My Listing", listings_path %>
-          <% end %>
-        </li>
+ 
+  <div class="nav navbar-nav navbar-right" id="navbarNav">
+    <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="float: right">Drop Down<span class="caret"></span></a>
+
+           
+
+      <ul class="dropdown-menu" role="menu" style="border: none;">
+        <!-- style="float: right; text-align: right; display: block;"> -->
+        <div class="dropdown-menu-item">
+          <!-- show my listing link -->
+          
+            <% if signed_in? && current_user.admin? %>
+            <%= link_to "My Listing", listings_path %>
+            <% end %>
+          
+          <!-- show my profile link -->
+          
+            <% if signed_in? %>
+            <%= link_to "My Profile", edit_user_path(current_user) %>
+            <% end %>
+          
+          
+          <!-- show current signed in email -->
+            <% if signed_in? %>
+            <%= current_user.email %>
+          
+          <!-- show sign in/out button -->
+          
+            <%= button_to t(".sign_out"), sign_out_path, method: :delete, :class => "btn btn-primary" %>
+            <% else %>
+              <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
+            <% end %>
+          
+        </div>
     </ul>
+   </li>
   </div>
 </nav>
 
- <!--    <div id="flash">
-      <% flash.each do |key, value| -%>
-        <div id="flash_<%= key %>"><%=h value %></div>
-      <% end %>
-    </div> -->
 
 <div>
 

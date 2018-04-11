@@ -4,6 +4,9 @@
 class User < ApplicationRecord
   include Clearance::User
  has_many :authentications, dependent: :destroy
+ has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+ validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+ has_many :listings
 
  def self.create_with_auth_and_hash(authentication, auth_hash)
    user = self.create!(
@@ -24,7 +27,6 @@ class User < ApplicationRecord
  def admin?
     self.role == "admin"
  end
-
- has_many :listings
+ 
 
 end
