@@ -39,6 +39,11 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'faker', '~> 1.8', '>= 1.8.7'
+
+gem "paperclip", "~> 6.0.0"
+# sudo apt-get install imagemagick -y
+# ^this help to comprass your image, run in terminal to install
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

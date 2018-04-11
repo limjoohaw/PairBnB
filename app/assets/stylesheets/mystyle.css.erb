@@ -24,6 +24,29 @@
 .card {
   margin: 1rem;
   width: 18rem;
+  height: 25rem;
+}
+
+
+.card p {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 6em;
+  line-height: 1.2em;
+}
+
+.card .btn-primary {
+  position: absolute;
+  bottom: 2%;
+}
+
+.card-price-label {
+  position: absolute;
+  bottom: 3%;
+  text-align: right;
+  right: 5%;
 }
 
 .back-to-top {
@@ -31,7 +54,7 @@
   right: 5%;
   bottom: 5%;
   text-align: center;
-
+  z-index: 1;
 }
 
 footer {

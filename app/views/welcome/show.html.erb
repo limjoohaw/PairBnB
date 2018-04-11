@@ -39,9 +39,9 @@
 
 		  <div class="card-body">
 		    <h5 class="card-title"><%= listing.name %></h5>
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <p class="card-text"><%= listing.more_description %></p>
 		    <%= link_to "More", listing_path(listing), :class => "btn btn-primary" %>
-		    <div class="text-right">From : $<%= listing.price.to_i %></div>
+		    <div class="card-price-label">From : $<%= listing.price.to_i %></div>
 		  </div>
 		</div>
   	<% end %>

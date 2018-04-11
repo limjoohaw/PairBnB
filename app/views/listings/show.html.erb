@@ -8,15 +8,26 @@
 	<%= render partial: '/listings/form' %>
 
 	<h1><%= @listing.name %></h1>
+	
+	 <div>
+		 <img class="img-fluid">
+			<% if @listing.picture.exists? %>
+			 	<%= image_tag(@listing.picture.url) %>
+		 	<% else %>
+			 	No Picture Display
+			<% end %>
+		 </img>
+	 </div>
+
 	 <div>
 	   <!-- Name : <%#= @listing.name %><br /> -->
 	   Phone : <%= @listing.phone %><br />
 	   Type : <%= @listing.property_type %><br />
 	   No. Room : <%= @listing.num_room %><br />
 	   Country : <%= @listing.country %><br />
+	   <%= @listing.more_description %><br />
 	   Price : <%= '%.2f' % @listing.price %><br />
 	   <% if signed_in? && current_user.id == @listing.user_id%>
-	   <!-- && current_user.id == current_listing.user_id -->
 		   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
 		   <%= link_to "Delete", @listing, method: :delete, :class => "btn btn-danger" %>
 	   <% end %>

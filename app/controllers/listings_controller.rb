@@ -1,10 +1,10 @@
 class ListingsController < ApplicationController
 
 	before_action :check_user, except: [:show]
-	before_action :check_owner, except: [:show, :index]
+	before_action :check_owner, except: [:show, :index, :new, :create]
 
 	def index
-		@listings = current_user.listings
+		@listings = current_user.listings.order("id DESC")
 	end
 
 	def show
@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
 
 	private
 	def allowed_params
-		params.require(:listing).permit(:name, :property_type, :phone, :country, :num_room, :price)
+		params.require(:listing).permit(:name, :property_type, :phone, :country, :num_room, :price, :more_description, :picture)
 	end
 
 	def check_user
