@@ -41,6 +41,13 @@ gem 'jquery-rails'
 gem 'faker', '~> 1.8', '>= 1.8.7'
 
 gem "paperclip", "~> 6.0.0"
+
+gem 'momentjs-rails', '>= 2.9.0'
+
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
+# gem 'bootstrap-sass', '~> 3.3.7'
+
 # sudo apt-get install imagemagick -y
 # ^this help to comprass your image, run in terminal to install
 
