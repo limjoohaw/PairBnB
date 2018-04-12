@@ -10,8 +10,8 @@
 			<% if @user.avatar.exists? %>
 			 	<%= image_tag(@user.avatar.url :medium) %>
 		 	<% else %>
-			 	No Picture Display
-			<% end %>
+		 		<%= image_tag "logos/no-avatar.png", :width => "300" %> 
+		 	<% end %>
 	 </img>
 
 	<div class="row justify-content-center">
@@ -22,6 +22,7 @@
 					<%= f.text_field :email, :class => "form-control", :readonly => "true" %><br />
 					<%= f.submit 'Update', :class => "btn btn-primary" %>
 					<%= f.file_field :avatar %>
+					<%= check_box_tag "_remove_picture", "1" %>Remove Picture
 				<% end %>
 			</div>
 	  </div>

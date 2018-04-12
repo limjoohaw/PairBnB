@@ -12,6 +12,9 @@ class UsersController < Clearance::UsersController
 
 	def update
 		@user = User.find(params[:id])
+		if params[:_remove_picture] == "1"
+			@user.avatar = nil
+		end
 		@user.update_attributes(allowed_params)
 		@next = edit_user_path
 		@notice = "Update Successful"
