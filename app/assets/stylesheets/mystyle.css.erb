@@ -1,0 +1,102 @@
+#sunsetpic, #relaxpic {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('<%= asset_path("background/sunset.jpg") %>');
+  height: 90vh;
+}
+
+#relaxpic {
+   background-image: url('<%= asset_path("background/relax.jpg") %>');
+}
+
+.display-4 {
+	font-size: 3rem;
+}
+
+.lead {
+	background-color: black;
+	color: white;
+	font-family: monospace;
+	font-size: 1.5rem;
+}
+
+.card {
+  margin: 1rem;
+  width: 18rem;
+  height: 25rem;
+}
+
+
+.card p {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 6em;
+  line-height: 1.2em;
+}
+
+.card .btn-primary {
+  position: absolute;
+  bottom: 2%;
+}
+
+.card-price-label {
+  position: absolute;
+  bottom: 3%;
+  text-align: right;
+  right: 5%;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  text-align: center;
+  z-index: 1;
+}
+
+.avatar {
+  width: 5rem;  
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.dropdown-menu-item {
+  float: right;
+  display: grid;
+  text-align: right;  
+}
+
+.booking-section1 {
+  position: fixed;
+  top: 150px;
+}
+
+.booking-section2 {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  margin: 0px !important;
+  border: 1px solid #e4e4e4 !important;
+  border-radius: 0.5rem;
+  background-color: #ffffff !important;
+}
+
+.booking-section3 {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.booking-section3-content {
+  position: relative;
+  margin: 1rem 0;
+}
+
+footer {
+  height: 5em;
+  background-color: #f8f9fa;
+  color: grey;
+  text-align: center;
+  padding: 2rem;
+}

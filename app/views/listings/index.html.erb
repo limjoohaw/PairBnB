@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body class="text-center">
+	<%= render partial: '/listings/form' %>
+	<h1>Index - All Listing</h1>
+		<div class="row justify-content-center">
+			<div style="display: inline-flex; flex-wrap: wrap;">
+			<table class="table">
+				  <div class="col-8">
+	
+							<thead class="thead-light">
+								<tr class="text-center">
+									<th scope="col">#</th>
+									<th scope="col">Name</th>
+									<th scope="col">Phone</th>
+									<th scope="col">Type</th>
+									<th scope="col">No. Room</th>
+									<th scope="col">Country</th>
+									<th scope="col">Price</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							
+						  <% @listings.each_with_index do |list, index| %>
+							<tbody>
+									<tr>
+										<td><%= index + 1 %></td>
+										<td><%= list.name %></td>
+										<td><%= list.phone %></td>
+										<td><%= list.property_type %></td>
+										<td><%= list.num_room %></td>
+										<td><%= list.country %></td>
+										<td><%= list.price %></td>
+									  <td>
+										  <%= link_to "View", listing_path(list), :class => "btn btn-outline-secondary" %>
+										  <%= link_to "Edit", edit_listing_path(list), :class => "btn btn-outline-secondary" %>
+										  <%= link_to "Delete", list, method: :delete, :data => { :confirm => "Are you sure ?"}, :class => "btn btn-danger" %>
+									  </td>
+								  </tr>
+						  </tbody>
+
+				  </div>
+				<% end %>
+			</table> 
+			 </div>
+		</div>
+
+</body>
+</html>

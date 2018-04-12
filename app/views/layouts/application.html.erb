@@ -1,24 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="header">
-    <% if signed_in? -%>
-      <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
-    <% else -%>
-      <%= link_to t(".sign_in"), sign_in_path %>
-    <% end -%>
+<!-- Just an image -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+
+    <a class="navbar=header" href="/">
+      <%= image_tag("logos/seabnb_logo.png", width: "80vh") %>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+   
+    <div class="nav navbar-nav navbar-right" id="navbarNav">
+      <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="float: right">
+         <% if signed_in? && current_user.avatar.file? %>
+            <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
+         <% else %>
+            <%= image_tag "logos/no-avatar.png", :class => "avatar" %>
+         <% end %>
+           <span class="caret"></span>
+         </a>
+
+             
+
+        <ul class="dropdown-menu" role="menu" style="border: none;">
+          <!-- style="float: right; text-align: right; display: block;"> -->
+          <div class="dropdown-menu-item">
+            <!-- show my listing link -->
+            
+              <% if signed_in? && current_user.admin? %>
+              <%= link_to "My Listing", listings_path %>
+              <% end %>
+            
+            <!-- show my profile link -->
+            
+              <% if signed_in? %>
+              <%= link_to "My Profile", edit_user_path(current_user) %>
+              <% end %>
+            
+            
+              <% if signed_in? %>
+            <!-- show current signed in email -->
+                <%= current_user.email %>
+            <!-- show sign in/out button -->
+                <%= button_to t(".sign_out"), sign_out_path, method: :delete, :class => "btn btn-primary" %>
+              <% else %>
+                <%= link_to t(".sign_in"), sign_in_path, :class => "btn btn-primary" %>
+              <% end %>
+            
+          </div>
+      </ul>
+     </li>
+    </div>
+  </nav>
+
+
+  <div>
+
+    <% if flash[:notice].present? %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+     
+    <% if flash[:alert].present? %>    
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+  </div>
+  <div>
+    
+    <a class="back-to-top" href="#">back to top</a>
+
   </div>
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
 
   <%= yield %>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <p>Copyright © 2018 Seabnb Inc. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- fontawesome js -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(function () {
+      $('#datetimepicker6').datetimepicker({
+        format: "YYYY-MM-DD", useCurrent: true});
+      $('#datetimepicker7').datetimepicker({
+        format: "YYYY-MM-DD", useCurrent: false}); //Important! See issue #1075
+      $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);});
+      $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);});
+    });
+  </script>
 </body>
 </html>

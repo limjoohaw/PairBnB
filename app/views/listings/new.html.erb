@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add List</title>
+</head>
+<body class="text-center">
+
+	<%= render partial: '/listings/form' %>
+
+	<h1>New - Listing</h1>
+	<div class="row justify-content-center">
+	  <div class="col-6">
+		<div class="form-group" style="text-align: left">
+			<%= form_for @listing do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name, :class => "form-control" %>
+				<%= f.label :phone %>
+				<%= f.text_field :phone, :class => "form-control" %>
+				<%= f.label :property_type %>
+				<%= f.text_field :property_type, :class => "form-control" %>
+				<%= f.label :country %>
+				<%= f.text_field :country, :class => "form-control" %>
+				<%= f.label :num_room %>
+				<%= f.text_field :num_room, :class => "form-control" %>
+				<%= f.label :more_description %>
+				<%= f.text_area :more_description, :class => "form-control" %>
+				<%= f.label :price %>
+				<%= f.text_field :price, :class => "form-control" %><br />
+				<%= f.submit 'Save', :class => "btn btn-outline-primary" %>				
+				<%= f.file_field :picture %>
+			<% end %>
+		</div>
+	  </div>
+	</div>
+
+</body>
+</html>

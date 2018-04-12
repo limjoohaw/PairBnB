@@ -1,0 +1,14 @@
+<div style="display: flex; justify-content: space-between; max-width: 98%;">
+	
+	<div>
+		<%= link_to "Back", :back %>
+	</div>
+
+	<div>
+	<% if signed_in? && current_user.admin? %>
+		<%= link_to "New Listing", new_listing_path, :class => "btn btn-primary" %>
+	<% end %>
+	</div>
+
+</div>
+		   
