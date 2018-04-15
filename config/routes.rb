@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "welcome#show"
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  resources :listings
+
+  resources :listings do 
+    resources :reservations, only: [:create]
+  end
+
   resources :users, except: [:create]
   # get "/user/:id/edit" => "users#edit"
   # get "/user/:id" => "users#show"
