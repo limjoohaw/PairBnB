@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
 
-	before_action :check_user, except: [:show]
-	before_action :check_owner, except: [:show, :index, :new, :create]
+	before_action :check_user, except: [:show, :searchresult]
+	before_action :check_owner, except: [:show, :index, :new, :create, :searchresult]
 
 	def index
 		@listings = current_user.listings.order("id DESC")
@@ -49,6 +49,14 @@ class ListingsController < ApplicationController
 		@notice = "Delete Successful"
 
 		redirect_to @next, :alert => @notice
+	end
+
+	def searchresult
+		@listings = Listing.where('country ilike ?', "%" + params[:searchkey] + "%")
+		@listings += Listing.where('name ilike ?', "%" + params[:searchkey] + "%")
+		@listings.uniq!
+
+		# SELECT * FROM listings WHERE country LIKE "%params[:searchkey]%" AND name LIKE "%params[:searchkey]%"
 	end
 
 

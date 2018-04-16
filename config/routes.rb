@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'braintree/new'
+  post 'braintree/new'
+  get 'braintree/checkout'
+  post 'braintree/checkout'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -18,6 +24,8 @@ Rails.application.routes.draw do
   resources :listings do 
     resources :reservations, only: [:create]
   end
+
+  get "/searchresult" => "listings#searchresult"
 
   resources :users, except: [:create]
   # get "/user/:id/edit" => "users#edit"

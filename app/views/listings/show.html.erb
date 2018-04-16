@@ -56,6 +56,7 @@
 	 					<%= f.date_field :date_out, type: 'text', :id => "datetimepicker7", :placeholder => "YYYY-MM-DD", :required => true %>
 	 				 </div>
 	 				 	<%= f.submit "Book Now", :data => { :confirm => "Are you sure ?"}, :class => "btn btn-outline-danger" %>
+	 				 	<%= link_to "Make Payment", braintree_new_path %>
 	 			 </div>
 	 		 </div>
 	 	 </div>

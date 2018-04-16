@@ -17,7 +17,9 @@ def create_from_omniauth
     @notice = "User created. Please confirm or edit details"
   end
 
+
   sign_in(user)
+  # NewUserEmailMailer.notify_user(@user).deliver
   redirect_to @next, :notice => @notice
 end
 end

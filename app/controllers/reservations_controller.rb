@@ -9,9 +9,11 @@ class ReservationsController < ApplicationController
 		@reservation = Reservation.new
 		@reservation = current_user.reservations.new(allowed_params)
 		@reservation.listing_id = params[:listing_id]
+		# NewUserEmailMailer.notify(current_user.email).deliver_now
 		@reservation.save
 		redirect_to root_path
 	end
+
 
 	private
 
