@@ -1,6 +1,7 @@
 <h1>Braintree#new</h1>
 
 <h2 class="text-center">Price is: <%= '%.2f' % @reservation.total_amount %></h2>
+
 <div class="demo-frame">
   <%= form_for :checkout_form, html: { id: "cardForm"}, url: braintree_checkout_path(@reservation) do |form| %>
     <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>

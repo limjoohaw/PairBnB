@@ -10,8 +10,8 @@ class ReservationsController < ApplicationController
 		@reservation = current_user.reservations.new(allowed_params)
 		@reservation.listing_id = params[:listing_id]
 		@notice = "Date not available"
-		# NewUserEmailMailer.notify(current_user.email).deliver_now
 		if @reservation.save
+				NewUserEmailMailer.notify(current_user.email).deliver_now
 				redirect_to braintree_new_path(@reservation.id)
 		else
 			flash[:alert] = @notice
