@@ -107,12 +107,14 @@
 
   <!-- fontawesome js -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
   <script type="text/javascript">
+
     $(function () {
       $('#datetimepicker6').datetimepicker({
-        format: "YYYY-MM-DD", useCurrent: true});
+        format: "YYYY-MM-DD", minDate: new Date(), useCurrent: true});
       $('#datetimepicker7').datetimepicker({
-        format: "YYYY-MM-DD", useCurrent: false}); //Important! See issue #1075
+        format: "YYYY-MM-DD", useCurrent: true, minDate: moment(new Date()).add(1, "days")}); //Important! See issue #1075
       $("#datetimepicker6").on("dp.change", function (e) {
         $('#datetimepicker7').data("DateTimePicker").minDate(e.date);});
       $("#datetimepicker7").on("dp.change", function (e) {

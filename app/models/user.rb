@@ -1,5 +1,3 @@
-# class User < ApplicationRecord
-# end
 class User < ApplicationRecord
   include Clearance::User
  has_many :authentications, dependent: :destroy

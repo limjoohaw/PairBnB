@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'braintree/new'
-  post 'braintree/new'
-  get 'braintree/checkout'
-  post 'braintree/checkout'
+  get '/reservations/:id/braintree/new' => "braintree#new", as: "braintree_new"
+  post '/reservations/:id/braintree/checkout' => "braintree#checkout", as: "braintree_checkout"
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
