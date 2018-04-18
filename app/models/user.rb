@@ -1,6 +1,3 @@
-# class User < ApplicationRecord
-# end
-
 class User < ApplicationRecord
   include Clearance::User
  has_many :authentications, dependent: :destroy
@@ -30,5 +27,4 @@ class User < ApplicationRecord
     self.role == "admin"
  end
  
-
 end

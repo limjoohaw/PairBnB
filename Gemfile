@@ -46,6 +46,8 @@ gem 'momentjs-rails', '>= 2.9.0'
 
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
+gem "braintree"
+
 # gem 'bootstrap-sass', '~> 3.3.7'
 
 # sudo apt-get install imagemagick -y

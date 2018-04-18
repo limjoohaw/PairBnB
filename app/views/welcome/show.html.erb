@@ -35,8 +35,12 @@
   <div class="row justify-content-center">
   	<% @listings.sample(9).each do |listing| %>
 		<div class="card">
-		  <%= image_tag("accomodations/treehouse.jpg", height: "180px") %>
-
+		  <%#= image_tag("accomodations/treehouse.jpg", height: "180px") %>
+				<% if listing.picture.exists? %>
+				 	<%= image_tag(listing.picture.url, height: "180px") %>
+			 	<% else %>
+			 		<%= image_tag "logos/no-avatar.png", :width => "180" %> 
+			 	<% end %>
 		  <div class="card-body">
 		    <h5 class="card-title"><%= listing.name %></h5>
 		    <p class="card-text"><%= listing.more_description %></p>

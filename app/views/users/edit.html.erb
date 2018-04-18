@@ -27,28 +27,34 @@
 			</div>
 	  </div>
 	</div>
+	<h2>Your Booked List</h2>
 	<div class="row justify-content-center">
-		<div style="display: inline-flex; flex-wrap: wrap;">
-			<h2>Your Booked List</h2>
+		<div class="listings-table" style="display: inline-flex; flex-wrap: wrap;">
 			<table class="table">
 				<div class="col-8">
 					<thead class="thead-light">
 						<tr class="text-center">
 							<th scope="col">#</th>
 							<th scope="col">List Name</th>
+							<th scope="col">Check In Date</th>
+							<th scope="col">Check Out Date</th>
 							<th scope="col">Country</th>
 							<th scope="col">Host's Person Incharge Email</th>
 							<th scope="col">Price Per Night</th>
+							<th scope="col"><i class="fas fa-eye"></i></th>
 						</tr>
 					</thead>
-					<% current_user.booked_listings.each_with_index do |bl, index| %>
+					<% current_user.reservations.each_with_index do |reservation, index| %>
 					<tbody>
 						<tr>
 							<td><%= index + 1 %>.</td>
-							<td><%= bl.name %></td>
-							<td><%= bl.country %></td>
-							<td><%= bl.user.email %></td>
-							<td><%= '%.2f' % bl.price %></td>
+							<td><%= reservation.listing.name %></td>
+							<td><%= reservation.date_in %></td>
+							<td><%= reservation.date_out %></td>
+							<td><%= reservation.listing.country %></td>
+							<td><%= reservation.listing.user.email %></td>
+							<td><%= '%.2f' % reservation.listing.price %></td>
+							<td><%= link_to "View", listing_path(reservation.listing), :class => "btn btn-outline-secondary" %></td>
 						</tr>
 					</tbody>
 					<% end %>

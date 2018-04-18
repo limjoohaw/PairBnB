@@ -23,42 +23,47 @@
 
 	 <div class="container" style="margin-bottom: 5rem;">
 	   <!-- Name : <%#= @listing.name %><br /> -->
-	   Phone : <%= @listing.phone %><br />
-	   Type : <%= @listing.property_type %><br />
-	   No. Room : <%= @listing.num_room %><br />
-	   Country : <%= @listing.country %><br />
-	   <%= @listing.more_description %><br />
-	   Price : <%= '%.2f' % @listing.price %><br />
-	   <% if signed_in? && current_user.id == @listing.user_id%>
-		   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
-		   <%= link_to "Delete", @listing, method: :delete, :data => { :confirm => "Are you sure ?"}, :class => "btn btn-danger" %>
-	   <% end %>
+	   <div class="col-md-8 offset-md-3 text-justify">
+		   Phone : <%= @listing.phone %><br />
+		   Type : <%= @listing.property_type %><br />
+		   No. Room : <%= @listing.num_room %><br />
+		   Country : <%= @listing.country %><br />
+		   Price : <%= '%.2f' % @listing.price %><br />
+		   <%= @listing.more_description %><br />
+		   <% if signed_in? && current_user.id == @listing.user_id%>
+			   <%= link_to "Edit", edit_listing_path(@listing), :class => "btn btn-outline-secondary" %>
+			   <%= link_to "Delete", @listing, method: :delete, :data => { :confirm => "Are you sure ?"}, :class => "btn btn-danger" %>
+		   <% end %>
+		   </div>
 	 </div>
 
 			<!-- it is work -->
-	 <div class="booking-section1">
-		 <div class="booking-section2" >
-			 <div class="booking-section3">
-				 <div class="booking-section3-content">
-				  <div>
-				 	 <label>Check-in Date</label>
-				 	</div>
-					<input type="text" name="" id="datetimepicker6">
-				 </div>
+	 <%= form_for [@listing, Reservation.new] do |f| %>
+	 	 <div class="booking-section1">
+	 		 <div class="booking-section2" >
+	 			 <div class="booking-section3">
+	 				 <div class="booking-section3-content">
+	 				  <div>
+	 				 	 <label>Check-in Date</label>
+	 				 	</div>
+	 					<!-- <input type="text" name="" id="datetimepicker6"> -->
+	 					<%= f.date_field :date_in, type: 'text', :id => "datetimepicker6", :placeholder => "YYYY-MM-DD", :required => true %>
 
-				 <div class="booking-section3-content">
-				  <div>
-					 <label>Check-out Date</label>	
-					</div>
-					<input type="text" name="" id="datetimepicker7">
-				 </div>
+	 				 </div>
 
-				 
-				 	<button class="btn btn-outline-danger">Book NOW !</button>
-
-			 </div>
-		 </div>
-	 </div>
+	 				 <div class="booking-section3-content">
+	 				  <div>
+	 					 <label>Check-out Date</label>	
+	 					</div>
+	 					<!-- <input type="text" name="" id="datetimepicker7" > -->
+	 					<%= f.date_field :date_out, type: 'text', :id => "datetimepicker7", :placeholder => "YYYY-MM-DD", :required => true %>
+	 				 </div>
+	 				 	<%= f.submit "Book Now", :data => { :confirm => "Are you sure ?"}, :class => "btn btn-outline-danger" %>
+	 				 	<%#= link_to "Make Payment", braintree_new_path %>
+	 			 </div>
+	 		 </div>
+	 	 </div>
+	 <% end %>
 
 </body>
 </html>

@@ -1,0 +1,31 @@
+
+<div class="container">
+	<h2>Search result of : <%= params[:searchkey] %></h2>
+  <div class="row justify-content-center">
+
+  	<% if !@listings.empty? %>
+	  	<% @listings.each do |listing| %>
+				<div class="card">
+					<% if listing.picture.exists? %>
+					 	<%= image_tag(listing.picture.url, height: "180px") %>
+				 	<% else %>
+				 		<%= image_tag "logos/no-avatar.png", :width => "180" %> 
+				 	<% end %>
+				  <div class="card-body">
+				    <h5 class="card-title"><%= listing.name %></h5>
+				    <p class="card-text"><%= listing.more_description %></p>
+				    <%= link_to "More", listing_path(listing), :class => "btn btn-primary" %>
+				    <div class="card-price-label">From : $<%= listing.price.to_i %></div>
+				  </div>
+				</div>
+	  	<% end %>
+	  <% else %>
+	  	No Record Found
+  	<% end %>
+  </div>
+</div>
+
+
+<%# @listings.each do |x| %>
+	<%#= x.country %>
+<%# end %>
